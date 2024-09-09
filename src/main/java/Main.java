@@ -14,10 +14,11 @@ public class Main {
             }
 
             // System.out.println(input + ": command not found");
-            String msg[] = input.split("\\");
+            String msg[] = input.split(" ");
             for(int word=1; word<msg.length;word++){
-                System.out.print(word);
+                System.out.print(msg[word]+" ");
             }
+            System.out.println();
         }
 
         // Close the scanner after the loop ends

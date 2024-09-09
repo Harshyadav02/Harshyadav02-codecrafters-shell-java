@@ -13,7 +13,11 @@ public class Main {
                 break;
             }
 
-            System.out.println(input + ": command not found");
+            // System.out.println(input + ": command not found");
+            String msg[] = input.split("\\");
+            for(int word=1; word<msg.length;word++){
+                System.out.print(word);
+            }
         }
 
         // Close the scanner after the loop ends

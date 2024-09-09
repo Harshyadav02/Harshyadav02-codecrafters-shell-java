@@ -16,7 +16,9 @@ public class Main {
             // System.out.println(input + ": command not found");
             String msg[] = input.split(" ");
             for(int word=1; word<msg.length;word++){
-                System.out.print(msg[word]+" ");
+                System.out.print(msg[word]);
+                if(word!=msg.length-1)
+                    System.out.print(" ");
             }
             System.out.println();
         }

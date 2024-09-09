@@ -9,7 +9,7 @@ public class Main {
             String input = scanner.nextLine();
 
             // Exit the loop if the user types "exit"
-            if (input.equalsIgnoreCase("exit")) {
+            if (input.equalsIgnoreCase("exit 0")) {
                 break;
             }
 

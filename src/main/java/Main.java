@@ -40,16 +40,13 @@ public class Main {
             if (input.equalsIgnoreCase("exit 0")) {
                 break;
             }
-            
-
             // calling echo to print msg
-            if(msg[0].equals("echo")){
+            else if(msg[0].equals("echo")){
                 echo(msg);
             }
-            if(msg[0].equals("type")){
+            else if(msg[0].equals("type")){
                 typeCommand(msg[1]);
             }
-                
             else
                 System.out.println(input + ": command not found");
             

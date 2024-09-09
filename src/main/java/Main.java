@@ -12,6 +12,19 @@ public class Main {
         }
         System.out.println();
     }
+
+    // making of type command 
+    public static void typeCommand(String str){
+
+        String inbuilts = "echo type exit";
+
+        if(inbuilts.contains(str)){
+            System.out.println(str+" is a shell builtin");
+        }
+        else{
+            System.out.println(str+": not found");
+        }
+    }
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
@@ -33,7 +46,11 @@ public class Main {
             if(msg[0].equals("echo")){
                 echo(msg);
             }
-            else 
+            if(msg[0].equals("type")){
+                typeCommand(msg[1]);
+            }
+                
+            else
                 System.out.println(input + ": command not found");
             
         }

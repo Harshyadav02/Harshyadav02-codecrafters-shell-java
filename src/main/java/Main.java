@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
@@ -13,16 +14,36 @@ public class Main {
         System.out.println();
     }
 
-    // making of type command 
-    public static void typeCommand(String str){
+     // Implementing the 'type' command
+    public static void typeCommand(String command) {
+        // List of built-in commands
+        String builtIns = "echo type exit";
 
-        String inbuilts = "echo type exit";
+        // Check if the command is a shell built-in
+        if (builtIns.contains(command)) {
+            System.out.println(command + " is a shell builtin");
+        } else {
+            // Get the PATH environment variable
+            String pathEnv = System.getenv("PATH");
+            
+            if (pathEnv != null) {
+                // Split PATH into individual directories
+                String[] paths = pathEnv.split(":");
 
-        if(inbuilts.contains(str)){
-            System.out.println(str+" is a shell builtin");
-        }
-        else{
-            System.out.println(str+": not found");
+                // Iterate through each directory in PATH
+                for (String path : paths) {
+                    File dir = new File(path);
+                    File commandFile = new File(dir, command);
+
+                    // Check if the file exists and is executable
+                    if (commandFile.exists() && commandFile.canExecute()) {
+                        System.out.println(command + " is " + commandFile.getAbsolutePath());
+                        return;
+                    }
+                }
+            }
+            // If the command is not found in PATH
+            System.out.println(command + ": not found");
         }
     }
     public static void main(String[] args) throws Exception {

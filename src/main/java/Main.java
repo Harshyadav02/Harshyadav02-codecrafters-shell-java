@@ -5,8 +5,15 @@ public class Main {
         // Uncomment this block to pass the first stage
         System.out.print("$ ");
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        System.out.println(input +": command not found" );
-        
+        while(true){
+            System.out.println("$ ");
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("exit")) {
+                break;
+            }
+            System.out.println(input +": command not found" );
+        }
+        scanner.close();
     }
 }

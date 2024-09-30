@@ -59,10 +59,10 @@ public class Main {
         String parts[] = userCommand.split("\\s+");
         // executable file
         String programName = parts[0];
-
+        System.out.println(programName);
         // actual command
         String args = parts[parts.length - 1];
-
+        System.out.println(args);
         // reterving path
         String path = System.getenv("PATH");
         String directories[] = path.split(":");
@@ -113,9 +113,13 @@ public class Main {
                 echo(msg);
             } else if (msg[0].equals("type")) {
                 typeCommand(msg[1]);
-            } else
-                // System.out.println(input + ": command not found");
-                runningExternalProgramsWithArguments(input);
+            } 
+            else if(msg[0]){
+
+            }
+            else
+                System.out.println(input + ": command not found");
+                
             // runProgram(msg
 
         }

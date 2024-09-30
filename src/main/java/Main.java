@@ -99,29 +99,12 @@ public class Main {
     }
     // print current working directory
 
-    public static void getCurrentWorkingDirectory(String userCommand) {
-        ProcessBuilder processBuilder = new ProcessBuilder(userCommand);
-    
-        try {
-            // Start the process
-            Process process = processBuilder.start();
-    
-            // Capture the output of the command
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);  // Print the current working directory
-            }
-    
-            // Wait for the process to complete
-            int exitCode = process.waitFor();
-            if (exitCode != 0) {
-                System.err.println("Error executing command: " + userCommand);
-            }
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
+    public static void pwdCommand() {
+        // Get the current working directory
+        String currentDirectory = System.getProperty("user.dir");
+        System.out.println(currentDirectory);
     }
+
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); // Initialize scanner to read user input
@@ -143,7 +126,7 @@ public class Main {
                 typeCommand(msg[1]); // Call the typeCommand method
             }
             else if(msg[0].toLowerCase().equals("pwd")){
-                getCurrentWorkingDirectory(msg[0]);
+                pwdCommand();
             }
             // Handle external commands
             else {

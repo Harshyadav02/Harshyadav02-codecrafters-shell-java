@@ -24,7 +24,9 @@ public class Main {
             } else if (msg[0].equals("pwd")) {
                 PwdCommand.pwdCommand(); // Call the pwdCommand method
             }
-
+            else if(msg[0].equals("cd")){
+                ChangeDir.changeDirectory(msg[1]);
+            }
             // Handle external commands
             else {
                 ExternalProgramRunner.runExternalProgram(input); // Call the method to run external programs

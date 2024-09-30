@@ -115,12 +115,16 @@ public class Main {
             } else if (msg[0].equals("type")) {
                 typeCommand(msg[1]);
             } 
-            else if(path.contains(msg[0])){
-                System.out.println(msg[0]);
-                runningExternalProgramsWithArguments(input);
-            }
+            // else if(path.contains(msg[0])){
+            //     System.out.println(msg[0]);
+            //     runningExternalProgramsWithArguments(input);
+            // }
             else
-                System.out.println(input + ": command not found");
+            {   System.out.println("External method called");
+                runningExternalProgramsWithArguments(input);
+                // System.out.println(input + ": command not found");
+            }
+                
                 
             // runProgram(msg
 

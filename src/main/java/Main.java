@@ -53,20 +53,20 @@ public class Main {
     // runing the program
     public static void runningExternalProgramsWithArguments(String userCommand) {
         if (userCommand.equals("")) {
-            System.out.println("No command found");
+            System.out.println(userCommand+ ": command found");
             return;
         }
         String parts[] = userCommand.split("\\s+");
         // executable file
         String programName = parts[0];
-        System.out.println(programName);
+        
         // actual command
         String args = parts[parts.length - 1];
-        System.out.println(args);
+        
         // reterving path
         String path = System.getenv("PATH");
         String directories[] = path.split(":");
-
+        boolean commandExecuted = false;
         try {
             for (String dir : directories) {
 
@@ -79,18 +79,23 @@ public class Main {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     System.out.println(line);
+                    
                 }
                 int exitCode = process.waitFor();
                 if (exitCode != 0) {
                     System.err.println("Error executing command: " + programName);
                 }
-                return;
+                commandExecuted = true;
+                break; //
+            }
+            if (!commandExecuted) {
+                System.out.println(programName + ": command not found");
             }
         } catch (IOException | InterruptedException e) {
             // Handle exceptions (optional)
             e.printStackTrace();
         }
-
+        System.out.println(userCommand+": command not found");;
     }
 
     public static void main(String[] args) throws Exception {
@@ -115,12 +120,9 @@ public class Main {
             } else if (msg[0].equals("type")) {
                 typeCommand(msg[1]);
             } 
-            // else if(path.contains(msg[0])){
-            //     System.out.println(msg[0]);
-            //     runningExternalProgramsWithArguments(input);
-            // }
-            else
-            {   System.out.println("External method called");
+            
+            else{ 
+            //   System.out.println("External method called");
                 runningExternalProgramsWithArguments(input);
                 // System.out.println(input + ": command not found");
             }

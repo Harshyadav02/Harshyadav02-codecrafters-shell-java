@@ -20,7 +20,7 @@ public class Main {
     // Method to implement the 'type' command, which checks if a command is built-in or external.
     public static void typeCommand(String command) {
         // List of built-in commands
-        String builtIns = "echo type exit";
+        String builtIns = "echo type exit pwd";
         
         // Check if the command is built-in
         if (builtIns.contains(command)) {
@@ -125,7 +125,7 @@ public class Main {
             } else if (msg[0].equals("type")) {
                 typeCommand(msg[1]); // Call the typeCommand method
             }
-            else if(msg[0].toLowerCase().equals("pwd")){
+            else if(msg[0].equals("pwd")){
                 pwdCommand();
             }
             // Handle external commands

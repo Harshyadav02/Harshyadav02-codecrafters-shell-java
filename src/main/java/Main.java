@@ -115,7 +115,7 @@ public class Main {
             } else if (msg[0].equals("type")) {
                 typeCommand(msg[1]);
             } 
-            else if(msg[0].trim().equals(path.trim())){
+            else if(path.contains(msg[0])){
                 System.out.println(msg[0]);
                 runningExternalProgramsWithArguments(input);
             }

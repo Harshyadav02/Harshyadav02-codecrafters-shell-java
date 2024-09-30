@@ -97,7 +97,15 @@ public class Main {
             e.printStackTrace(); // Handle any exceptions that occur
         }
     }
+    // print current working directory
 
+    public static void getCurrentWorkingDirectory(String userCommand){
+
+        ProcessBuilder processBuilder = new ProcessBuilder();
+
+        System.out.println(processBuilder.command(userCommand));
+
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); // Initialize scanner to read user input
 
@@ -116,6 +124,9 @@ public class Main {
                 echo(msg); // Call the echo method
             } else if (msg[0].equals("type")) {
                 typeCommand(msg[1]); // Call the typeCommand method
+            }
+            else if(msg[0].toLowerCase().equals("pwd")){
+                getCurrentWorkingDirectory(msg[0]);
             }
             // Handle external commands
             else {

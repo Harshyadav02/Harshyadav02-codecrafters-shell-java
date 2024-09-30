@@ -95,7 +95,8 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
-
+        String path = System.getenv("PATH");
+        String directories[] = path.split(":");
         while (true) {
             System.out.print("$ ");
             // input from user
@@ -113,9 +114,14 @@ public class Main {
                 echo(msg);
             } else if (msg[0].equals("type")) {
                 typeCommand(msg[1]);
-            } else
-                // System.out.println(input + ": command not found");
+            } 
+            else if(msg[0].equals(path)){
+                
                 runningExternalProgramsWithArguments(input);
+            }
+            else
+                System.out.println(input + ": command not found");
+                
             // runProgram(msg
 
         }

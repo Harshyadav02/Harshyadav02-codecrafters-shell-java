@@ -114,12 +114,10 @@ public class Main {
             } else if (msg[0].equals("type")) {
                 typeCommand(msg[1]);
             } 
-            else if(msg[0]){
-
-            }
+            
             else
-                System.out.println(input + ": command not found");
-                
+                // System.out.println(input + ": command not found");
+                runningExternalProgramsWithArguments(input);
             // runProgram(msg
 
         }

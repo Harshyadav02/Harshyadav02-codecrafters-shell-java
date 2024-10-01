@@ -20,7 +20,7 @@ public class Main {
             else if (msg[0].equals("echo")) {
                 EchoCommand.echo(msg); // Call the echo method
             } else if (msg[0].equals("type")) {
-                System.out.println("msg 1 " + msg[1]);
+                
                 TypeCommand.typeCommand(msg[1]); // Call the typeCommand method
             } else if (msg[0].equals("pwd")) {
                 PwdCommand.pwdCommand(); // Call the pwdCommand method

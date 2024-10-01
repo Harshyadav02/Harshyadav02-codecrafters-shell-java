@@ -8,6 +8,10 @@ public class ChangeDir {
     private static Path actualDir = Paths.get(System.getProperty("user.dir"));
 
     public static void changeDirectory(String newDir) {
+
+        if (newDir.equals("~")) {
+            newDir = System.getProperty("user.home");
+        }
         // Resolve the new directory based on the current one
         Path targetDirectory = actualDir.resolve(newDir).normalize();
 
@@ -24,4 +28,6 @@ public class ChangeDir {
     public static String getCurrentDirectory() {
         return actualDir.toString();
     }
+
+    
 }

@@ -9,9 +9,12 @@ public class ChangeDir {
     private static Path previousDir = actualDir;  // Track the previous directory for 'cd -'
 
     public static void changeDirectory(String newDir) {
-        // Handle 'cd' with no arguments, defaulting to the home directory
+        // Use the HOME environment variable instead of system property
+        String homeDir = System.getenv("HOME");
+        
+        // Handle 'cd' with no arguments or '~', default to the home directory
         if (newDir == null || newDir.equals("") || newDir.equals("~")) {
-            newDir = System.getProperty("user.home");
+            newDir = homeDir;
         } else if (newDir.equals("-")) {
             // Handle 'cd -' to switch to the previous directory
             Path tempDir = actualDir;
@@ -20,7 +23,7 @@ public class ChangeDir {
         }
 
         // Resolve the new directory based on the current one
-        Path targetDirectory = actualDir.resolve(newDir).normalize();
+        Path targetDirectory = Paths.get(newDir).normalize();
 
         // Check if the new path exists and is a directory
         if (Files.exists(targetDirectory, new LinkOption[0]) && Files.isDirectory(targetDirectory, new LinkOption[0])) {

@@ -31,7 +31,7 @@ public class ChangeDir {
             previousDir = actualDir;
             actualDir = targetDirectory; // Successfully change the current directory
         } else {
-            System.out.println("cd: " + newDir + ": No such file or directory");
+            return;
         }
     }
 
